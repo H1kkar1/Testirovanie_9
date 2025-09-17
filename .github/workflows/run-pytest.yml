@@ -24,9 +24,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12' # Укажите вашу версию Python (3.8, 3.9, 3.10, 3.11)
+          python-version: '3.12' 
 
-      # Шаг 3: Установка зависимостей (если у вас есть requirements.txt)
+      # Шаг 3: Установка зависимостей 
       - name: Install dependencies
         run: |
           cd Lab1
