@@ -3,8 +3,8 @@ on:
   push:
   pull_request:
 
-jobs:
-  pg:
+jobs:    
+  test:
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -17,9 +17,6 @@ jobs:
           POSTGRES_DB: user
           PGDATA: /var/lib/postgresql/data/pgdata
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-  test:
-    needs: pg
-    runs-on: ubuntu-latestS
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
