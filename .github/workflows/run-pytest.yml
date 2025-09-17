@@ -38,4 +38,5 @@ jobs:
       # Шаг 4: Запуск ваших тестов
       - name: Run tests with pytest
         run: |
+          cd Lab1
           python -m pytest ./Lab1/tests/test_user.py -v
