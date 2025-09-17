@@ -26,14 +26,17 @@ jobs:
         with:
           python-version: '3.12' # Укажите вашу версию Python (3.8, 3.9, 3.10, 3.11)
 
-      # Шаг 3: Установка зависимостей (если у вас есть requirements.txt)
-      - name: Install dependencies
-        run: |
-          cd Lab1
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          alembic upgrade head
+      # # Шаг 3: Установка зависимостей (если у вас есть requirements.txt)
+      # - name: Install dependencies
+      #   run: |
+      #     cd Lab1
+      #     python -m pip install --upgrade pip
+      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      #     alembic upgrade head
       # Шаг 4: Запуск ваших тестов
       - name: Run tests with pytest
         run: |
+          pwd
+          ls -la
+          find . -name "test_user.py" -type f
           python -m pytest Lab1/app/tests/test_user.py -v
