@@ -9,8 +9,21 @@ import jwt
 import sys
 import os
 from pathlib import Path
-root_dir = Path(__file__).parent
-sys.path.append(str(root_dir))
+from app.db import db_helper  # импортируйте ваш db_helper
+
+
+import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.db import db_helper
+
+@pytest.fixture
+async def async_session() -> AsyncSession:
+    """Правильная фикстура для асинхронной сессии"""
+    async with db_helper.session_factory() as session:
+        try:
+            yield session
+        finally:
+            await session.rollback()
 
 
 @pytest.fixture(scope="function")
