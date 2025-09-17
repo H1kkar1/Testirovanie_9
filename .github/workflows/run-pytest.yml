@@ -4,23 +4,22 @@ on:
   pull_request:
 
 jobs:
-  test:
+  pg:
     runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:17-alpine
         ports:
-        - "5433:5433"
+        - "5432:5432"
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 1234
+          POSTGRES_PASSWORD: 123
           POSTGRES_DB: user
           PGDATA: /var/lib/postgresql/data/pgdata
-    env:
-      POSTGRES_DB: rails_test
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 1234
-      DATABASE_URL: "postgres://user:1234@localhost:5432/user"
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+  test:
+    needs: pg
+    runs-on: ubuntu-latestS
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
