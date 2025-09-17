@@ -34,7 +34,6 @@ pydantic-settings==2.7.0
 pydantic_core==2.27.1
 Pygments==2.18.0
 PyJWT==2.10.1
-pytest==8.3.4
 python-dotenv==1.0.1
 python-multipart==0.0.19
 PyYAML==6.0.2
