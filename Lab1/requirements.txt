@@ -38,6 +38,7 @@ python-dotenv==1.0.1
 python-multipart==0.0.19
 PyYAML==6.0.2
 pytest==8.4.2
+pytest-asyncio==1.2.0
 requests==2.32.3
 rich==13.9.4
 rich-toolkit==0.12.0
